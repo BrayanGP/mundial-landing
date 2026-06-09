@@ -15,6 +15,8 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
   <!-- ===== Header ===== -->
   <header class="site-header" id="top">
     <a class="brand" href="#top">
@@ -49,10 +51,10 @@
         <a class="btn btn-pink" href="#game">⚽ Tira un penal</a>
       </div>
       <ul class="hero-stats">
-        <li><strong>48</strong><span>Selecciones</span></li>
-        <li><strong>104</strong><span>Partidos</span></li>
-        <li><strong>16</strong><span>Ciudades sede</span></li>
-        <li><strong>3</strong><span>Países anfitriones</span></li>
+        <li><strong data-count="48">0</strong><span>Selecciones</span></li>
+        <li><strong data-count="104">0</strong><span>Partidos</span></li>
+        <li><strong data-count="16">0</strong><span>Ciudades sede</span></li>
+        <li><strong data-count="3">0</strong><span>Países anfitriones</span></li>
       </ul>
     </div>
   </section>
@@ -137,6 +139,28 @@
     </ol>
   </section>
 
+  <!-- ===== Group draw simulator ===== -->
+  <section class="draw" id="draw">
+    <h2 class="section-title">Simula el sorteo</h2>
+    <p class="section-lead">48 selecciones, 12 grupos. Pulsa y mira cómo cae el bombo.</p>
+    <div class="draw-controls">
+      <button class="btn btn-primary" id="draw-btn" type="button">🎲 Sortear grupos</button>
+      <button class="btn btn-ghost" id="draw-clear" type="button">Limpiar</button>
+    </div>
+    <div class="groups" id="groups"></div>
+  </section>
+
+  <!-- ===== Predict champion ===== -->
+  <section class="predict" id="predict">
+    <h2 class="section-title">Predice tu campeón</h2>
+    <p class="section-lead">Elige a quién levantará la copa. Guardamos tu pronóstico en este dispositivo.</p>
+    <div class="predict-current" id="predict-current" hidden>
+      <span class="trophy">🏆</span>
+      <p>Tu campeón: <strong id="predict-name"></strong></p>
+    </div>
+    <div class="team-grid" id="team-grid" role="list" aria-label="Selecciona tu campeón"></div>
+  </section>
+
   <!-- ===== Penalty mini-game ===== -->
   <section class="game" id="game">
     <h2 class="section-title">Tanda de penales</h2>
@@ -178,5 +202,6 @@
 
   <script src="script.js"></script>
   <script src="game.js"></script>
+  <script src="features.js"></script>
 </body>
 </html>
