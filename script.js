@@ -76,4 +76,134 @@ form.addEventListener("submit", (e) => {
   msg.textContent = "¡Listo! Te avisaremos de todas las novedades. 🎉";
   msg.style.color = "var(--gold)";
   form.reset();
+  window.MundialFX?.confetti();
 });
+
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// ===== Fondo de partículas del hero =====
+(function heroParticles() {
+  const canvas = document.getElementById("hero-canvas");
+  if (!canvas || reducedMotion) return;
+  const ctx = canvas.getContext("2d");
+  let w, h, particles;
+
+  function resize() {
+    w = canvas.width = canvas.offsetWidth;
+    h = canvas.height = canvas.offsetHeight;
+    const count = Math.min(90, Math.floor((w * h) / 16000));
+    particles = Array.from({ length: count }, () => ({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      r: Math.random() * 2.4 + 0.6,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: (Math.random() - 0.5) * 0.3,
+      a: Math.random() * 0.5 + 0.2,
+    }));
+  }
+
+  function frame() {
+    ctx.clearRect(0, 0, w, h);
+    for (const p of particles) {
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < 0 || p.x > w) p.vx *= -1;
+      if (p.y < 0 || p.y > h) p.vy *= -1;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(245, 197, 66, ${p.a})`;
+      ctx.fill();
+    }
+    requestAnimationFrame(frame);
+  }
+
+  resize();
+  window.addEventListener("resize", resize);
+  frame();
+})();
+
+// ===== Scroll reveal =====
+(function scrollReveal() {
+  const targets = document.querySelectorAll(
+    ".section-title, .section-lead, .host-card, .format-item, .timeline li, .newsletter-card, .clock-unit, .game-board"
+  );
+  targets.forEach((el) => el.classList.add("reveal"));
+  if (reducedMotion || !("IntersectionObserver" in window)) {
+    targets.forEach((el) => el.classList.add("is-visible"));
+    return;
+  }
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add("is-visible");
+          io.unobserve(e.target);
+        }
+      });
+    },
+    { threshold: 0.12 }
+  );
+  targets.forEach((el) => io.observe(el));
+})();
+
+// ===== Confeti compartido (window.MundialFX.confetti) =====
+window.MundialFX = (function confettiFX() {
+  const canvas = document.getElementById("confetti-canvas");
+  if (!canvas) return { confetti() {} };
+  const ctx = canvas.getContext("2d");
+  const colors = ["#f5c542", "#ff4d8d", "#11543f", "#ffffff", "#ffd766"];
+  let pieces = [];
+  let running = false;
+
+  function size() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  window.addEventListener("resize", size);
+  size();
+
+  function loop() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    pieces.forEach((p) => {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vy += 0.12;
+      p.rot += p.vr;
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rot);
+      ctx.fillStyle = p.color;
+      ctx.fillRect(-p.s / 2, -p.s / 2, p.s, p.s * 0.6);
+      ctx.restore();
+    });
+    pieces = pieces.filter((p) => p.y < canvas.height + 30);
+    if (pieces.length) {
+      requestAnimationFrame(loop);
+    } else {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      running = false;
+    }
+  }
+
+  function confetti(n = 130) {
+    if (reducedMotion) return;
+    for (let i = 0; i < n; i++) {
+      pieces.push({
+        x: canvas.width / 2 + (Math.random() - 0.5) * 220,
+        y: canvas.height / 3,
+        vx: (Math.random() - 0.5) * 9,
+        vy: Math.random() * -9 - 3,
+        s: Math.random() * 9 + 5,
+        rot: Math.random() * Math.PI,
+        vr: (Math.random() - 0.5) * 0.3,
+        color: colors[(Math.random() * colors.length) | 0],
+      });
+    }
+    if (!running) {
+      running = true;
+      requestAnimationFrame(loop);
+    }
+  }
+
+  return { confetti };
+})();
