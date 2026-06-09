@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Mundial 2026 — La fiesta del fútbol llega a Estados Unidos, México y Canadá. Cuenta regresiva, sedes, calendario y todo lo que necesitas saber." />
+  <meta name="theme-color" content="#0b3d2e" />
+  <meta property="og:title" content="Mundial 2026 — Unidos por el fútbol" />
+  <meta property="og:description" content="48 selecciones. 3 países. 1 sueño. Vive la cuenta regresiva al Mundial 2026." />
+  <meta property="og:type" content="website" />
+  <title>Mundial 2026 · Unidos por el fútbol</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ===== Header ===== -->
+  <header class="site-header" id="top">
+    <a class="brand" href="#top">
+      <span class="brand-ball" aria-hidden="true">⚽</span>
+      <span class="brand-text">Mundial<strong>2026</strong></span>
+    </a>
+    <nav class="nav" aria-label="Navegación principal">
+      <a href="#countdown">Cuenta regresiva</a>
+      <a href="#hosts">Sedes</a>
+      <a href="#format">Formato</a>
+      <a href="#schedule">Fechas</a>
+      <a class="nav-cta" href="#newsletter">Recibe novedades</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <canvas class="hero-canvas" id="hero-canvas" aria-hidden="true"></canvas>
+    <div class="hero-inner">
+      <p class="kicker">11 jun – 19 jul · 2026</p>
+      <h1 class="hero-title">Unidos<br />por el <span class="accent">fútbol</span></h1>
+      <p class="hero-sub">
+        Por primera vez en la historia, <strong>48 selecciones</strong> y
+        <strong>3 países</strong> — Estados Unidos, México y Canadá — se unen
+        para la mayor Copa del Mundo jamás disputada.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#newsletter">Quiero entradas</a>
+        <a class="btn btn-ghost" href="#hosts">Explorar sedes</a>
+        <a class="btn btn-pink" href="#game">⚽ Tira un penal</a>
+      </div>
+      <ul class="hero-stats">
+        <li><strong>48</strong><span>Selecciones</span></li>
+        <li><strong>104</strong><span>Partidos</span></li>
+        <li><strong>16</strong><span>Ciudades sede</span></li>
+        <li><strong>3</strong><span>Países anfitriones</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== Countdown ===== -->
+  <section class="countdown" id="countdown">
+    <h2 class="section-title">La cuenta regresiva ha comenzado</h2>
+    <p class="section-lead">El partido inaugural se juega en el Estadio Azteca, Ciudad de México.</p>
+    <div class="clock" id="clock" role="timer" aria-live="polite">
+      <div class="clock-unit"><span class="num" data-unit="days">--</span><span class="lbl">Días</span></div>
+      <div class="clock-unit"><span class="num" data-unit="hours">--</span><span class="lbl">Horas</span></div>
+      <div class="clock-unit"><span class="num" data-unit="minutes">--</span><span class="lbl">Minutos</span></div>
+      <div class="clock-unit"><span class="num" data-unit="seconds">--</span><span class="lbl">Segundos</span></div>
+    </div>
+    <p class="clock-note" id="clock-note"></p>
+  </section>
+
+  <!-- ===== Hosts ===== -->
+  <section class="hosts" id="hosts">
+    <h2 class="section-title">Tres países, un solo escenario</h2>
+    <p class="section-lead">16 ciudades repartidas a lo largo del continente.</p>
+    <div class="host-grid">
+      <article class="host-card">
+        <span class="flag" aria-hidden="true">🇲🇽</span>
+        <h3>México</h3>
+        <p>Ciudad de México · Guadalajara · Monterrey</p>
+        <span class="host-tag">Sede del partido inaugural</span>
+      </article>
+      <article class="host-card">
+        <span class="flag" aria-hidden="true">🇺🇸</span>
+        <h3>Estados Unidos</h3>
+        <p>Nueva York/NJ · Los Ángeles · Dallas · Miami · Atlanta · y más</p>
+        <span class="host-tag">Sede de la gran final</span>
+      </article>
+      <article class="host-card">
+        <span class="flag" aria-hidden="true">🇨🇦</span>
+        <h3>Canadá</h3>
+        <p>Toronto · Vancouver</p>
+        <span class="host-tag">Debut como anfitrión</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== Format ===== -->
+  <section class="format" id="format">
+    <h2 class="section-title">Un formato histórico</h2>
+    <div class="format-grid">
+      <div class="format-item">
+        <div class="format-num">12</div>
+        <h3>Grupos</h3>
+        <p>Cuatro equipos por grupo en la fase inicial.</p>
+      </div>
+      <div class="format-item">
+        <div class="format-num">32</div>
+        <h3>Dieciseisavos</h3>
+        <p>Por primera vez, una ronda de 32 en eliminación directa.</p>
+      </div>
+      <div class="format-item">
+        <div class="format-num">104</div>
+        <h3>Partidos</h3>
+        <p>El torneo más largo y disputado de la historia.</p>
+      </div>
+      <div class="format-item">
+        <div class="format-num">39</div>
+        <h3>Días</h3>
+        <p>Más de un mes de fútbol sin descanso.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Schedule ===== -->
+  <section class="schedule" id="schedule">
+    <h2 class="section-title">Fechas clave</h2>
+    <ol class="timeline">
+      <li><span class="t-date">11 jun</span><span class="t-event">Partido inaugural · Estadio Azteca</span></li>
+      <li><span class="t-date">12–27 jun</span><span class="t-event">Fase de grupos</span></li>
+      <li><span class="t-date">28 jun – 3 jul</span><span class="t-event">Dieciseisavos de final</span></li>
+      <li><span class="t-date">4–7 jul</span><span class="t-event">Octavos de final</span></li>
+      <li><span class="t-date">9–11 jul</span><span class="t-event">Cuartos de final</span></li>
+      <li><span class="t-date">14–15 jul</span><span class="t-event">Semifinales</span></li>
+      <li><span class="t-date">19 jul</span><span class="t-event">¡La Gran Final!</span></li>
+    </ol>
+  </section>
+
+  <!-- ===== Penalty mini-game ===== -->
+  <section class="game" id="game">
+    <h2 class="section-title">Tanda de penales</h2>
+    <p class="section-lead">Arrastra para apuntar, suelta para disparar. ¿Llegas a la racha perfecta?</p>
+    <div class="game-board">
+      <div class="game-hud">
+        <div class="hud-item"><span class="hud-num" id="g-score">0</span><span class="hud-lbl">Goles</span></div>
+        <div class="hud-item"><span class="hud-num" id="g-shots">0</span><span class="hud-lbl">Disparos</span></div>
+        <div class="hud-item"><span class="hud-num" id="g-streak">0</span><span class="hud-lbl">Racha</span></div>
+        <div class="hud-item"><span class="hud-num" id="g-best">0</span><span class="hud-lbl">Mejor</span></div>
+      </div>
+      <canvas id="penalty" width="640" height="420" role="img"
+              aria-label="Mini-juego de penales: arrastra para apuntar y suelta para disparar"></canvas>
+      <p class="game-msg" id="g-msg">¡Apunta y dispara!</p>
+      <button class="btn btn-ghost game-reset" id="g-reset" type="button">Reiniciar tanda</button>
+    </div>
+  </section>
+
+  <!-- ===== Newsletter ===== -->
+  <section class="newsletter" id="newsletter">
+    <div class="newsletter-card">
+      <h2>No te pierdas nada</h2>
+      <p>Déjanos tu correo y recibe alertas de entradas, calendario y novedades del Mundial 2026.</p>
+      <form class="news-form" id="news-form" novalidate>
+        <input type="email" id="news-email" name="email" placeholder="tu@correo.com" aria-label="Correo electrónico" required />
+        <button type="submit" class="btn btn-primary">Suscribirme</button>
+      </form>
+      <p class="news-msg" id="news-msg" role="status"></p>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <p>Hecho con ⚽ para la fiesta del fútbol · <strong>Mundial 2026</strong></p>
+    <p class="disclaimer">Sitio promocional no oficial. Fechas y sedes sujetas a confirmación oficial.</p>
+  </footer>
+
+  <canvas class="confetti-canvas" id="confetti-canvas" aria-hidden="true"></canvas>
+
+  <script src="script.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
